@@ -27,21 +27,26 @@ export const Carousel = ({ products }: Props) => {
     const currentProduct = products[current];
     const price = currentProduct.default_price as Stripe.Price;
 
-    return <Card className="relative overflow-hidden ronded-lf shadow-md border-gray-300">{currentProduct.images && currentProduct.images[0] && (
-        <div className="relative h-150 w-auto"><Image 
-            src={currentProduct.images[0]} 
-            alt={currentProduct.name}
-            fill
-            objectFit="cover"
-            className="transition-opacity duration-500 ease-in-out"
-        />
-        <CardContent className="absolute inset-0 flex flex-col items-center justify-center bg-black bg-opacity-50">
-            <CardTitle className="text-3xl font-bold text-white mb-2">{currentProduct.name}</CardTitle>
-                {price && price.unit_amount && 
-                    (<p className="text-white text-xl font-bold">
-                        RM{(price.unit_amount / 100).toFixed(2)}
-                    </p>)}
-        </CardContent>
-        </div>
-    )}</Card>;
+    return (
+        <Card className="relative overflow-hidden rounded-lg shadow-md border-gray-300">
+            {currentProduct.images && currentProduct.images[0] && (
+                <div className="relative h-[400px] w-full">
+                    <Image 
+                        src={currentProduct.images[0]} 
+                        alt={currentProduct.name}
+                        fill
+                        className="object-contain transition-opacity duration-500 ease-in-out"
+                    />
+                </div>
+            )}
+            <CardContent className="absolute inset-0 flex flex-col items-center justify-center bg-black bg-opacity-50">
+                <CardTitle className="text-3xl font-bold text-white mb-2">{currentProduct.name}</CardTitle>
+                    {price && price.unit_amount && 
+                        (<p className="text-white text-xl font-bold">
+                            RM{(price.unit_amount / 100).toFixed(2)}
+                        </p>
+            )}
+                </CardContent>
+            </Card>
+    );
 }
