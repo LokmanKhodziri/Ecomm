@@ -1,7 +1,7 @@
 'use client'
 
 import Stripe from "stripe";
-import { ProductCard } from "./ui/product-card";
+import { ProductCard } from "./product-card";
 import { useState } from "react";
 
 interface Props {

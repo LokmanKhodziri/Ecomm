@@ -1,8 +1,8 @@
 import Link from "next/link";
 import Stripe from "stripe";
-import { Card, CardContent, CardHeader, CardTitle } from "./card";
+import { Card, CardContent, CardHeader, CardTitle } from "./ui/card";
 import Image from "next/image";
-import { Button } from "./button";
+import { Button } from "./ui/button";
 
 interface Props {
     product: Stripe.Product;
@@ -18,7 +18,7 @@ export const ProductCard = ({ product }: Props) => {
     };
 
     return (
-        <Link href={"/products/1"}>
+        <Link href={`/products/${product.id}`}>
             <Card className="group hover:shadow-2xl transition duration-300 py-0 h-full flex flex-col border-gray-300 gap-0 text-center">
                 {product.images && product.images[0] && (
                     <div className="relative h-[300px] w-full overflow-hidden">
