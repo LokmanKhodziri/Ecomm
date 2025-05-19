@@ -34,19 +34,19 @@ export const ProductCard = ({ product }: Props) => {
                 <CardHeader className="p-4">
                     <CardTitle className="text-xl font-bold text-gray-800">
                             {product.name}
-                        </CardTitle>
-                    <CardContent className="p-4 flex-grow flex flex-col justify-between">
-                        {product.description && (
-                            <p className="text-gray-600 text-sm mb-2">{truncateDescription(product.description)}</p>
-                        )}
-                        {price && price.unit_amount && 
-                            (<p className="text-xl font-bold">
-                                RM{(price.unit_amount / 100).toFixed(2)}
-                            </p>
-                        )}
-                        <Button className="mt-4 bg-black text-white hover:bg-gray-800 transition duration-300">View Details</Button>
-                    </CardContent>
+                    </CardTitle>
                 </CardHeader>
+                <CardContent className="p-4 flex-grow flex flex-col justify-between">
+                    {product.description && (
+                        <p className="text-gray-600 text-sm mb-2">{truncateDescription(product.description)}</p>
+                    )}
+                    {price && price.unit_amount && 
+                        (<p className="text-xl font-bold">
+                            RM{(price.unit_amount / 100).toFixed(2)}
+                        </p>
+                    )}
+                    <Button className="mt-4 bg-black text-white hover:bg-gray-800 transition duration-300">View Details</Button>
+                </CardContent>
             </Card>
         </Link>
     );         
