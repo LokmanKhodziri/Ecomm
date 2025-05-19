@@ -12,6 +12,8 @@ export interface CartItem {
 interface CartStore {
     item: CartItem[]
     addItem: (item: CartItem) => void
+    removeItem: (id: string) => void
+    clearCart: () => void
 }
 
 export const useCartStore = create<CartStore>()(persist((set) => ({
@@ -26,5 +28,9 @@ export const useCartStore = create<CartStore>()(persist((set) => ({
         }
 
         return {item: [...state.item, item]}
-    })
+    }),
+    removeItem: (id) => set((state) => ({
+        item: state.item.map((i) => i.id === id ? {...i, quantity: i.quantity - 1} : i).filter((item) => item.quantity > 0)
+    })),
+    clearCart: () => set({ item: [] })
 }), {name: 'cart'}))
