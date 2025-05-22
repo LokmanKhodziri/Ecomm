@@ -3,6 +3,7 @@
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { useCartStore } from "@/store/cart-store"
+import { checkoutAction } from "./checkout-action"
 
 export default function CheckoutPage() {
 
@@ -50,7 +51,8 @@ export default function CheckoutPage() {
                     </div>
                 </CardContent>
             </Card>
-            <form className="flex flex-col sm:flex-row gap-4 justify-end mt-6">
+            <form action={checkoutAction} className="flex flex-col sm:flex-row gap-4 justify-end mt-6">
+                <input type="hidden" name="items" value={JSON.stringify(item)} />
             <Button 
                     onClick={() => clearCart()} 
                     variant="destructive"

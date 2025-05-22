@@ -1,36 +1,167 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# E-Commerce Project
 
-## Getting Started
+A modern e-commerce application built with Next.js, TypeScript, and Stripe for payments.
 
-First, run the development server:
+## Features
 
+- 🛒 Shopping cart functionality
+- 💳 Stripe payment integration
+- 🎨 Modern UI with Tailwind CSS
+- 📱 Responsive design
+- 🔒 Server-side actions
+- 🎯 TypeScript support
+
+## Tech Stack
+
+- **Framework:** Next.js 14
+- **Language:** TypeScript
+- **Styling:** Tailwind CSS
+- **State Management:** Zustand
+- **Payment Processing:** Stripe
+- **UI Components:** Shadcn/ui
+
+## Prerequisites
+
+Before you begin, ensure you have the following installed:
+- Node.js (v18 or higher)
+- npm or yarn
+- Stripe account
+
+## Environment Variables
+
+Create a `.env.local` file in the root directory with the following variables:
+
+```env
+NEXT_PUBLIC_APP_URL=http://localhost:3000
+STRIPE_SECRET_KEY=your_stripe_secret_key
+```
+
+## Installation
+
+1. Clone the repository:
+```bash
+git clone [your-repository-url]
+```
+
+2. Install dependencies:
+```bash
+npm install
+# or
+yarn install
+```
+
+3. Run the development server:
 ```bash
 npm run dev
 # or
 yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+4. Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Project Structure
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```
+├── app/
+│   ├── checkout/
+│   │   ├── checkout-action.ts
+│   │   └── page.tsx
+│   ├── success/
+│   │   └── page.tsx
+│   └── page.tsx
+├── components/
+│   └── ui/
+├── lib/
+│   └── stripe.ts
+├── store/
+│   └── cart-store.ts
+└── public/
+```
 
-## Learn More
+## Key Features Implementation
 
-To learn more about Next.js, take a look at the following resources:
+### Shopping Cart
+- Uses Zustand for state management
+- Persists cart data in localStorage
+- Supports adding, removing, and updating quantities
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Checkout Process
+- Server-side action for secure payment processing
+- Stripe integration for payment handling
+- Success and cancel pages for payment flow
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## API Routes
 
-## Deploy on Vercel
+### Checkout Action
+- **Path:** `/checkout`
+- **Method:** POST
+- **Description:** Handles the checkout process and creates a Stripe session
+- **Request Body:**
+  ```typescript
+  {
+    items: CartItem[]
+  }
+  ```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## State Management
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+The project uses Zustand for state management. The main store is defined in `store/cart-store.ts`:
+
+```typescript
+interface CartStore {
+  item: CartItem[];
+  addItem: (item: CartItem) => void;
+  removeItem: (id: string) => void;
+  clearCart: () => void;
+}
+```
+
+## Styling
+
+The project uses:
+- Tailwind CSS for utility-first styling
+- Shadcn/ui for pre-built components
+- Custom components in the `components` directory
+
+## Deployment
+
+1. Build the project:
+```bash
+npm run build
+# or
+yarn build
+```
+
+2. Start the production server:
+```bash
+npm start
+# or
+yarn start
+```
+
+## Contributing
+
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+## Future Improvements
+
+- [ ] User authentication
+- [ ] Product categories
+- [ ] Search functionality
+- [ ] Order history
+- [ ] Admin dashboard
+- [ ] Multiple payment methods
+- [ ] Product reviews
+- [ ] Wishlist feature
+
+## License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+## Support
+
+For support, email [your-email] or open an issue in the repository.
