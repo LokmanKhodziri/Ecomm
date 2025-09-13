@@ -26,7 +26,7 @@ export const ProductCard = ({ product }: Props) => {
                             src={product.images[0]} 
                             alt={product.name}
                             fill
-                            className="object-contain transition-opacity duration-500 ease-in-out"
+                            className="object-contain transition-transform duration-500 ease-in-out group-hover:scale-105"
                         />
                     </div>
                 )}

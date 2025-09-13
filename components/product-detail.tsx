@@ -4,6 +4,7 @@ import Stripe from "stripe"
 import Image from "next/image"
 import { Button } from "./ui/button";
 import { useCartStore } from "@/store/cart-store";
+import { toast } from "sonner";
 
 interface Props {
     product: Stripe.Product
@@ -24,6 +25,7 @@ export const ProductDetail = ({product}: Props) => {
             imageUrl: product.images ? product.images[0] : null,
             quantity: 1,
         })
+        toast.success(`${product.name} has been added to your cart.`);
     }
     
     return(
