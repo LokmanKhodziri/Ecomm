@@ -1,17 +1,10 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Inter } from "next/font/google";
 import "./globals.css";
+import { cn } from "@/lib/utils";
 import { Navbar } from "@/components/navbar";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -25,7 +18,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning={true}>
-      <body className="flex min-h-screen flex-col bg-white" suppressHydrationWarning={true}>
+      <body
+        className={cn(
+          "min-h-screen bg-background font-sans antialiased",
+          inter.variable
+        )}
+        suppressHydrationWarning={true}
+      >
         <Navbar/>
           <main className="flex-grow container mx-auto px-4 py-8">
             {children}

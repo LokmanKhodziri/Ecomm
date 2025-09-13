@@ -36,6 +36,7 @@ export const ProductDetail = ({product}: Props) => {
                                 src={product.images[0]} 
                                 alt={product.name}
                                 fill
+                                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 50vw"
                                 className="object-contain transition-opacity duration-500 ease-in-out"
                             />
                         </div>

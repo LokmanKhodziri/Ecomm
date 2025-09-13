@@ -114,7 +114,7 @@ export const Navbar = () => {
                       alt={product.name}
                       width={40}
                       height={40}
-                      className='mr-4'
+                      className='mr-4 w-auto h-auto'
                     />
                     <div>
                       <p className='font-semibold'>{product.name}</p>

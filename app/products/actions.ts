@@ -7,7 +7,7 @@ export async function getProducts() {
     expand: ["data.default_price"],
   });
 
-  console.log("First product metadata:", products.data[0]?.metadata);
+  
 
   const categories = [
     ...new Set(
@@ -20,7 +20,7 @@ export async function getProducts() {
   const brands = [
     ...new Set(
       products.data
-        .map((product) => product.metadata.brand)
+        .map((product) => product.metadata.Brand)
         .filter((brand): brand is string => typeof brand === 'string')
     ),
   ];

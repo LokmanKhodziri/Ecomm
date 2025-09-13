@@ -40,7 +40,7 @@ export const ProductFilter = () => {
 
         if (selectedBrands.length > 0) {
             tempProducts = tempProducts.filter(product => 
-                product.metadata.brand && selectedBrands.includes(product.metadata.brand)
+                product.metadata.Brand && selectedBrands.includes(product.metadata.Brand)
             );
         }
 
@@ -58,7 +58,7 @@ export const ProductFilter = () => {
             });
         }
 
-        console.log("Filtered products:", tempProducts);
+        
         setFilteredProducts(tempProducts);
     }, [sortOption, selectedCategories, selectedBrands, products]);
 
